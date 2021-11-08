@@ -1,10 +1,7 @@
-library(readxl)
-
 #Get data
 
-train <- read.csv("trainCSV.csv")
-test = read.csv("testCSV.csv")
-variable <- read_excel("variable.xlsx")
+train <- read.csv("train.csv")
+test = read.csv("test.csv")
 
 # Predictions for Fraud converted into Numerical data, 1 = Fraud, 0 = Not Fraud
 train$FRAUD_NONFRAUD <- ifelse(train$FRAUD_NONFRAUD == "Fraud",1,0)
