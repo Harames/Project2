@@ -1,7 +1,7 @@
 #Get data
 
 train <- read.csv("training.csv")
-test = read.csv("testest.csv")
+test = read.csv("testing.csv")
 
 # Predictions for Fraud converted into Numerical data, 1 = Fraud, 0 = Not Fraud
 train$FRAUD_NONFRAUD <- ifelse(train$FRAUD_NONFRAUD == "Fraud",1,0)
