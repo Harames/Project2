@@ -28,8 +28,8 @@ smallTrain = train[smallData,]
 
 one_boot <- function(data) {
   index <- sample(1:nrow(data), nrow(data), replace=T)
-  model <- glm(FRAUD_NONFRAUD ~ ACCT_PRE_TRAN_AVAIL_BAL + TRAN_AMT + CUST_AGE + DVC_TYPE_TXT, data = data[index,], family = "binomial")
-  return(coef(summary(model))[2:5,2]) 
+  model <- glm(FRAUD_NONFRAUD ~ ACCT_PRE_TRAN_AVAIL_BAL , data = data[index,], family = "binomial")
+  return(coef(summary(model))[2:2,2]) 
   #This returns a single bootstraped estimate of standard error
 }
 one_boot(smallTrain)
@@ -39,7 +39,7 @@ BS_estimate <- function(num.boots) {
   for (i in 1:num.boots) {
     all_the_boots = rbind(all_the_boots, one_boot(smallTrain))
   }
-  return(c(mean(all_the_boots[,1]),mean(all_the_boots[,2]),mean(all_the_boots[,3]),mean(all_the_boots[,4])))
+  return(c(mean(all_the_boots[,1])))
 }
 
 BS_estimate(100)
